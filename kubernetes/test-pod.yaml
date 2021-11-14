@@ -1,0 +1,20 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-app
+  labels:
+    hello: universe
+spec:
+  containers:
+    - name: test-app
+      image: ubuntu:focal
+      command: ["/bin/bash"]
+      args: ["-c", "apt update && apt install -y curl && sleep infinity"]
+      volumeMounts:
+        - name: cert
+          mountPath: /etc/opt
+          readOnly: true
+  volumes:
+    - name: cert
+      secret:
+        secretName: client-cert

@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: mutating-webhook
+spec:
+  selector:
+    app: mutating-webhook
+  ports:
+    - port: 443
+      targetPort: 443
